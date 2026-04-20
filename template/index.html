@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Interview Q&A App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 10px 20px;
+        }
+        .response {
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Basic Interview Q&A App</h1>
+    
+    <form method="POST">
+        {% csrf_token %}
+        <label for="question">Enter your interview question:</label><br><br>
+        <input type="text" id="question" name="question" value="{{ question|default:'' }}" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    {% if answer %}
+    <div class="response">
+        <h3>Answer:</h3>
+        <p>{{ answer }}</p>
+    </div>
+    {% endif %}
+    
+    <hr>
+    <p><small>Available questions: "Tell me about yourself", "Strengths", "Weakness"</small></p>
+</body>
+</html>
